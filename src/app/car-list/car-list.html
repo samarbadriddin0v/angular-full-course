@@ -1,1 +1,13 @@
-<p class="paragraph">car-list works!</p>
+<div>
+  <input type="text" placeholder="Enter car name" [(ngModel)]="carName" />
+  <input type="date" placeholder="Enter car year" [(ngModel)]="carYear" />
+  <button (click)="onSubmit()">Add</button>
+</div>
+
+<!-- 
+
+() -> Event binding
+[] - Property binding
+{{}} - Interpolation
+
+-->
