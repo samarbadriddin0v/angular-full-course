@@ -4,6 +4,14 @@
   <button (click)="onSubmit()">Add</button>
 </div>
 
+<ul>
+  @for(car of cars; track car.id) {
+  <li>
+    {{car.name}} | {{car.year}} <button (click)="onDelete(car)">Delete</button>
+  </li>
+  }
+</ul>
+
 <!-- 
 
 () -> Event binding

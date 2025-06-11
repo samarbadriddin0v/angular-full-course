@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Car } from '../models/car';
 import { FormsModule } from '@angular/forms';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-car-list',
@@ -8,11 +9,16 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './car-list.html',
   styleUrl: './car-list.css',
 })
-export class CarList {
-  carName: string = 'Chevrolet';
+export class CarList implements OnInit {
+  carName: string = '';
   carYear: Date = new Date();
 
-  cars: Car[] = [{ id: 1, name: 'Chevrolet', year: new Date('2020-01-01') }];
+  cars: Car[] = [];
+
+  ngOnInit(): void {
+    const savedCars = localStorage.getItem('cars');
+    this.cars = savedCars ? JSON.parse(savedCars) : [];
+  }
 
   onSubmit() {
     if (this.carName.length != 0 && this.carYear) {
@@ -24,7 +30,12 @@ export class CarList {
       this.cars.push(newCar);
       this.carName = '';
       this.carYear = new Date();
-      console.log(this.cars);
+      localStorage.setItem('cars', JSON.stringify(this.cars));
     }
+  }
+
+  onDelete(car: Car) {
+    this.cars = this.cars.filter((c) => c.id !== car.id);
+    localStorage.setItem('cars', JSON.stringify(this.cars));
   }
 }
