@@ -7,6 +7,11 @@ import { Reservation } from '../models/reservation';
 export class CarService {
   private reservations: Reservation[] = [];
 
+  constructor() {
+    const savedReservations = localStorage.getItem('reservations');
+    this.reservations = savedReservations ? JSON.parse(savedReservations) : [];
+  }
+
   getReservations(): Reservation[] {
     return this.reservations;
   }
@@ -17,20 +22,23 @@ export class CarService {
 
   addReservation(reservation: Reservation): void {
     this.reservations.push(reservation);
+    localStorage.setItem('reservations', JSON.stringify(this.reservations));
   }
 
   deleteReservation(id: number): void {
     this.reservations = this.reservations.filter(
       (reservation) => reservation.id !== id
     );
+    localStorage.setItem('reservations', JSON.stringify(this.reservations));
   }
 
-  updateReservation(updatedReservation: Reservation): void {
+  updateReservation(id: number, updatedReservation: Reservation): void {
     this.reservations = this.reservations.map((item) => {
-      if (item.id === updatedReservation.id) {
+      if (item.id === id) {
         return updatedReservation;
       }
       return item;
     });
+    localStorage.setItem('reservations', JSON.stringify(this.reservations));
   }
 }
