@@ -2,12 +2,10 @@ import { Component } from '@angular/core';
 import { Car } from '../models/car';
 import { FormsModule } from '@angular/forms';
 import { OnInit } from '@angular/core';
-import { CurrencyPipe, DatePipe, TitleCasePipe } from '@angular/common';
-import { TextPipe } from '../pipes/text.pipe';
 
 @Component({
   selector: 'app-car-list',
-  imports: [FormsModule, CurrencyPipe, DatePipe, TitleCasePipe, TextPipe],
+  imports: [FormsModule],
   templateUrl: './car-list.html',
   styleUrl: './car-list.css',
 })
@@ -16,10 +14,6 @@ export class CarList implements OnInit {
   carYear: Date = new Date();
 
   cars: Car[] = [];
-
-  amount = 123.45;
-  company = 'acme corporation';
-  purchasedOn = '2024-07-08';
 
   ngOnInit(): void {
     const savedCars = localStorage.getItem('cars');
