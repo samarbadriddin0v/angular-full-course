@@ -1,11 +1,13 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Reservation } from '../models/reservation';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CarService {
   private reservations: Reservation[] = [];
+  private http = inject(HttpClient);
 
   constructor() {
     const savedReservations = localStorage.getItem('reservations');
