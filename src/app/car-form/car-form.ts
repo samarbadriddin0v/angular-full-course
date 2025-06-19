@@ -33,11 +33,11 @@ export class CarForm implements OnInit {
   ngOnInit() {
     const reservationId = this.activatedRoute.snapshot.paramMap.get('id');
     if (reservationId) {
-      this.loadReservation(+reservationId);
+      this.loadReservation(reservationId);
     }
   }
 
-  loadReservation(reservationId: number): void {
+  loadReservation(reservationId: string): void {
     this.carService.getReservationById(reservationId).subscribe({
       next: (data) => {
         this.reservationForm.patchValue({ ...data });
@@ -52,19 +52,27 @@ export class CarForm implements OnInit {
   onSubmit() {
     const reservationId = this.activatedRoute.snapshot.paramMap.get('id');
     if (reservationId) {
-      const reservation = this.carService.getReservationById(+reservationId);
-      if (reservation) {
-        this.carService.updateReservation(+reservationId, {
-          ...this.reservationForm.value,
-          id: +reservationId,
+      this.carService
+        .updateReservation(reservationId, this.reservationForm.value)
+        .subscribe({
+          next: () => {
+            this.reservationForm.reset();
+            this.router.navigate(['/list']);
+          },
+          error: (err) => {
+            console.error('Error updating reservation:', err);
+          },
         });
-        this.router.navigate(['/list']);
-      }
     } else {
-      const data = { ...this.reservationForm.value, id: Date.now() };
-      this.carService.addReservation(data);
-      this.reservationForm.reset();
-      this.router.navigate(['/list']);
+      this.carService.addReservation(this.reservationForm.value).subscribe({
+        next: () => {
+          this.reservationForm.reset();
+          this.router.navigate(['/list']);
+        },
+        error: (err) => {
+          console.error('Error adding reservation:', err);
+        },
+      });
     }
   }
 }

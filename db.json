@@ -1,22 +1,13 @@
 {
   "reservations": [
     {
-      "id": "1",
-      "checkIn": "2025-06-11",
-      "checkOut": "2025-06-11",
-      "clientEmail": "sam@gmail.com",
-      "clientName": "Sam",
-      "carModel": "Toyota",
-      "carNumber": "811"
-    },
-    {
-      "id": "2",
-      "checkIn": "2025-06-11",
-      "checkOut": "2025-06-11",
-      "clientEmail": "john@gmail.com",
-      "clientName": "John",
-      "carModel": "Chevrolet",
-      "carNumber": "118"
+      "checkIn": "2025-06-04",
+      "checkOut": "2025-06-24",
+      "clientName": "Sammi",
+      "clientEmail": "dwawa",
+      "carModel": "dwa",
+      "carNumber": 231,
+      "id": "72d6"
     }
   ]
 }

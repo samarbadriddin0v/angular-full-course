@@ -32,8 +32,9 @@ export class CarList implements OnInit {
     });
   }
 
-  deleteReservation(id: number): void {
-    // this.reservetionService.deleteReservation(id);
-    // this.reservationList = this.reservetionService.getReservations();
+  deleteReservation(id: string): void {
+    this.reservetionService.deleteReservation(id).subscribe({
+      next: () => this.loadReservations(),
+    });
   }
 }

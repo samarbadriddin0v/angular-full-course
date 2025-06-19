@@ -1,5 +1,5 @@
 export interface Reservation {
-  id: number;
+  id: string;
   checkIn: Date;
   checkOut: Date;
   clientName: string;
