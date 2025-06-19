@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -15,10 +15,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrl: './car-form.css',
   standalone: true,
 })
-export class CarForm {
+export class CarForm implements OnInit {
   carService = inject(CarService);
   activatedRoute = inject(ActivatedRoute);
   router = inject(Router);
+  cdr = inject(ChangeDetectorRef);
 
   reservationForm: FormGroup = new FormGroup({
     checkIn: new FormControl('', [Validators.required]),
@@ -29,21 +30,23 @@ export class CarForm {
     carNumber: new FormControl('', [Validators.required]),
   });
 
-  constructor() {
+  ngOnInit() {
     const reservationId = this.activatedRoute.snapshot.paramMap.get('id');
     if (reservationId) {
-      const reservation = this.carService.getReservationById(+reservationId);
-      if (reservation) {
-        this.reservationForm.patchValue({
-          checkIn: reservation.checkIn,
-          checkOut: reservation.checkOut,
-          clientName: reservation.clientName,
-          clientEmail: reservation.clientEmail,
-          carModel: reservation.carModel,
-          carNumber: reservation.carNumber,
-        });
-      }
+      this.loadReservation(+reservationId);
     }
+  }
+
+  loadReservation(reservationId: number): void {
+    this.carService.getReservationById(reservationId).subscribe({
+      next: (data) => {
+        this.reservationForm.patchValue({ ...data });
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        console.error('Error fetching reservation:', err);
+      },
+    });
   }
 
   onSubmit() {

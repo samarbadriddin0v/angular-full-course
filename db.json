@@ -1,7 +1,7 @@
 {
   "reservations": [
     {
-      "id": 1,
+      "id": "1",
       "checkIn": "2025-06-11",
       "checkOut": "2025-06-11",
       "clientEmail": "sam@gmail.com",
@@ -10,7 +10,7 @@
       "carNumber": "811"
     },
     {
-      "id": 2,
+      "id": "2",
       "checkIn": "2025-06-11",
       "checkOut": "2025-06-11",
       "clientEmail": "john@gmail.com",
