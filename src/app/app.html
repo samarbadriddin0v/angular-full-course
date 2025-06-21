@@ -1,4 +1,2 @@
-<button class="btn btn-primary" (click)="increment()">Increment</button>
-<button class="btn btn-secondary" (click)="reset()">Reset</button>
-<button class="btn btn-danger" (click)="decrement()">Decrement</button>
-<p>Current count: {{ count() }}</p>
+<input type="text" [value]="email()" (input)="onEmailChange($event)" />
+<p>Email: {{email()}}</p>
