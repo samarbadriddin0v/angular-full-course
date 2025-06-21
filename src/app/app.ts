@@ -1,22 +1,19 @@
-import { Component, signal } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
+import { Component, computed, signal } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
-  imports: [],
+  imports: [CurrencyPipe],
 })
 export class App {
-  count = signal(0);
+  price = signal(100); // Tax - Total Price
 
-  increment() {
-    this.count.update((value) => value + 1);
-  }
+  tax = computed(() => this.price() * 0.2);
+  totalPrice = computed(() => this.price() + this.tax());
 
-  decrement() {
-    this.count.update((value) => value - 1);
-  }
-
-  reset() {
-    this.count.set(0);
+  applyDiscount() {
+    const discount = this.price() * 0.1; // 10$ discount
+    this.price.set(this.price() - discount);
   }
 }

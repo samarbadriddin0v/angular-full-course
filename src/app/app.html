@@ -1,9 +1,5 @@
-<div class="d-flex align-items-center gap-2">
-  <button class="btn btn-primary" (click)="increment()">Increment</button>
-  <h1>Count: {{count()}}</h1>
-  <button class="btn btn-secondary" (click)="decrement()">Decrement</button>
-</div>
+<h1>{{totalPrice() | currency}}</h1>
 
-<button class="btn btn-danger" (click)="reset()">Reset</button>
-
-{{readonlyCount()}}
+<button class="btn btn-primary" (click)="applyDiscount()">
+  Apply Discount
+</button>
