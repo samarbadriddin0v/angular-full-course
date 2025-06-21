@@ -1,25 +1,9 @@
-import { Component, effect, signal } from '@angular/core';
+import { Component } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.html',
-  imports: [],
+  imports: [RouterOutlet],
 })
-export class App {
-  email = signal('');
-  emailError = '';
-
-  constructor() {
-    effect(() => {
-      const keyword = this.email();
-      if (keyword.length >= 3) {
-        console.log(`Searching for: ${keyword}`);
-      }
-    });
-  }
-
-  onEmailChange(event: Event) {
-    const input = event.target as HTMLInputElement;
-    this.email.set(input.value);
-  }
-}
+export class App {}

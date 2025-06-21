@@ -1,3 +1,4 @@
+// Production environment configuration
 export const environment = {
-  apiUrl: 'https://api.example.com',
+  apiUrl: 'https://fakestoreapi.com',
 };
