@@ -23,7 +23,7 @@ export class ProductCard {
       next: () =>
         this._snackBar.open('Product added to cart!', '', {
           duration: 2000,
-          horizontalPosition: 'right',
+          horizontalPosition: 'left',
           verticalPosition: 'top',
         }),
     });

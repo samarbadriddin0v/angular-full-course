@@ -26,8 +26,4 @@ export class CartService {
   updateQunatity(cartId: string, quantity: number): Observable<Cart> {
     return this.http.patch<Cart>(`${this.apiUrl}/cart/${cartId}`, { quantity });
   }
-
-  clearCart(): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/cart`);
-  }
 }

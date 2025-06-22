@@ -1,36 +1,58 @@
 <div class="container-sm">
-  <mat-card appearance="outlined">
+  @for (item of cart(); track item.id) {
+  <mat-card appearance="outlined" class="mb-2">
     <mat-card-header>
-      <mat-card-title>Title</mat-card-title>
-      <mat-card-subtitle>$120.000</mat-card-subtitle>
+      <mat-card-title>{{item.product.title}}</mat-card-title>
+      <mat-card-subtitle>{{item.product.price | currency}}</mat-card-subtitle>
     </mat-card-header>
 
-    <mat-card-content>
+    <mat-card-content class="mt-2">
       <div class="quantity-controls">
-        <button mat-mini-fab color="primary" aria-label="Add">
+        <button
+          mat-mini-fab
+          color="primary"
+          aria-label="Add"
+          (click)="decrease(item.id, item.quantity)"
+        >
           <mat-icon>remove</mat-icon>
         </button>
 
-        <span class="mx-2">2</span>
+        <span class="mx-2">{{item.quantity}}</span>
 
-        <button mat-mini-fab color="primary" aria-label="Add">
+        <button
+          mat-mini-fab
+          color="primary"
+          aria-label="Add"
+          (click)="increase(item.id, item.quantity)"
+        >
           <mat-icon>add</mat-icon>
         </button>
       </div>
     </mat-card-content>
 
     <mat-card-actions>
-      <button mat-button color="warn" aria-label="Remove">
+      <button
+        mat-button
+        color="warn"
+        aria-label="Remove"
+        (click)="remove(item.id)"
+      >
         <mat-icon>delete</mat-icon>
         Remove
       </button>
     </mat-card-actions>
   </mat-card>
+  }
 
   <mat-card class="total-card">
-    <mat-card-title>Total: $120.000</mat-card-title>
+    <mat-card-title>Total: {{totalPrice() | currency}} </mat-card-title>
     <div class="mt-2">
-      <button mat-button matButton="filled" aria-label="Remove">
+      <button
+        mat-button
+        matButton="filled"
+        aria-label="Remove"
+        (click)="clear()"
+      >
         Clear Cart
         <mat-icon>clear</mat-icon>
       </button>
