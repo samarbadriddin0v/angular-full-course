@@ -3,18 +3,7 @@
   <mat-grid-list cols="3" rowHeight="2:1">
     @for (item of productList(); track item.id) {
     <mat-grid-tile>
-      <mat-card class="product-card" appearance="outlined">
-        <mat-card-header>
-          <mat-card-title-group>
-            <mat-card-title>{{item.title | truncate:50}}</mat-card-title>
-            <mat-card-subtitle>{{item.category}}</mat-card-subtitle>
-            <img mat-card-sm-image [src]="item.image" />
-          </mat-card-title-group>
-        </mat-card-header>
-        <mat-card-content>
-          {{item.description | truncate:200 }}
-        </mat-card-content>
-      </mat-card>
+      <app-product-card [item]="item"></app-product-card>
     </mat-grid-tile>
     }
   </mat-grid-list>
