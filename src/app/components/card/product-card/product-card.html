@@ -1,4 +1,4 @@
-<mat-card class="product-card" appearance="outlined">
+<mat-card class="product-card" appearance="outlined" (click)="addCart(item)">
   <mat-card-header>
     <mat-card-title-group>
       <mat-card-title>{{item.title | truncate:50}}</mat-card-title>
