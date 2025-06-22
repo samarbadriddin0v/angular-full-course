@@ -22,8 +22,8 @@
               }
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "@angular/material/prebuilt-themes/azure-blue.css",
+              "src/styles.css"
             ]
           },
           "configurations": {
@@ -81,7 +81,10 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.css"]
+            "styles": [
+              "@angular/material/prebuilt-themes/azure-blue.css",
+              "src/styles.css"
+            ]
           }
         }
       }

@@ -10,10 +10,12 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/cdk": "^20.0.3",
     "@angular/common": "^20.0.0",
     "@angular/compiler": "^20.0.0",
     "@angular/core": "^20.0.0",
     "@angular/forms": "^20.0.0",
+    "@angular/material": "^20.0.3",
     "@angular/platform-browser": "^20.0.0",
     "@angular/router": "^20.0.0",
     "bootstrap": "^5.3.6",
