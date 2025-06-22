@@ -12,3 +12,28 @@
   font-weight: bold;
   text-align: right;
 }
+
+.empty-cart {
+  text-align: center;
+  background-color: #fafafa;
+  padding: 40px;
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.empty-content {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.empty-icon {
+  width: 100px;
+  height: 100px;
+  font-size: 80px;
+  color: #ccc;
+}

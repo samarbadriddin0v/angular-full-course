@@ -1,4 +1,21 @@
 <div class="container-sm">
+  <div>
+    @if(cart().length === 0){
+    <mat-card class="empty-cart">
+      <mat-card-content class="center-content">
+        <div class="empty-content">
+          <mat-icon class="empty-icon">shopping_cart</mat-icon>
+        </div>
+        <h2>Your cart is empty</h2>
+        <p>Browse products and add items to your cart.</p>
+        <button mat-raised-button color="primary" routerLink="/products">
+          Shop now
+        </button>
+      </mat-card-content>
+    </mat-card>
+    }
+  </div>
+
   @for (item of cart(); track item.id) {
   <mat-card appearance="outlined" class="mb-2">
     <mat-card-header>
@@ -44,18 +61,22 @@
   </mat-card>
   }
 
-  <mat-card class="total-card">
-    <mat-card-title>Total: {{totalPrice() | currency}} </mat-card-title>
-    <div class="mt-2">
-      <button
-        mat-button
-        matButton="filled"
-        aria-label="Remove"
-        (click)="clear()"
-      >
-        Clear Cart
-        <mat-icon>clear</mat-icon>
-      </button>
-    </div>
-  </mat-card>
+  <div>
+    @if(cart().length) {
+    <mat-card class="total-card">
+      <mat-card-title>Total: {{totalPrice() | currency}} </mat-card-title>
+      <div class="mt-2">
+        <button
+          mat-button
+          matButton="filled"
+          aria-label="Remove"
+          (click)="clear()"
+        >
+          Clear Cart
+          <mat-icon>clear</mat-icon>
+        </button>
+      </div>
+    </mat-card>
+    }
+  </div>
 </div>
