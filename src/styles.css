@@ -16,3 +16,9 @@ body {
   max-width: 1200px;
   margin: auto;
 }
+
+.container-sm {
+  padding: 20px;
+  max-width: 600px;
+  margin: auto;
+}
